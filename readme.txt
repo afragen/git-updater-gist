@@ -1,17 +1,11 @@
 # Git Updater - GitHub Gist
 
-![downloads](https://img.shields.io/github/downloads/afragen/git-updater-gist/total) ![downloads@latest](https://img.shields.io/github/downloads/afragen/git-updater-gist/latest/total)
-
-![WordPress Tests](https://github.com/afragen/git-updater-gist/workflows/WordPress%20Tests/badge.svg)
-
-### GitHub Gist API for GitHub Updater plugin
-
-* Contributors: [Andy Fragen](https://github.com/afragen), [contributors](https://github.com/afragen/git-updater-gist/graphs/contributors)
+* Contributors: afragen
 * Tags: gist, github, api, git updater, github updater
 * Requires at least: 5.2
 * Requires PHP: 5.6
-* Tested up to: trunk
-* Stable tag: [main](https://github.com/afragen/git-updater-gist/releases/latest)
+* Tested up to: 5.7
+* Stable tag: main
 * Donate link: <https://thefragens.com/github-updater-donate>
 * License: MIT
 
