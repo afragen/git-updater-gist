@@ -1,0 +1,31 @@
+# Copyright (C) 2021 Andy Fragen
+# This file is distributed under the same license as the GitHub Updater - Gist plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: GitHub Updater - Gist 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/git-updater-gist\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-03-07T06:14:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: git-updater-gist\n"
+
+#. Plugin Name of the plugin
+msgid "GitHub Updater - Gist"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/afragen/git-updater-gist"
+msgstr ""
+
+#. Description of the plugin
+msgid "Add GitHub Gist hosted repositories to the GitHub Updater plugin."
+msgstr ""
+
+#. Author of the plugin
+msgid "Andy Fragen"
+msgstr ""
