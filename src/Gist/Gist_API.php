@@ -319,7 +319,7 @@ class Gist_API extends API implements API_Interface {
 	public function add_settings( $auth_required ) {
 		add_settings_section(
 			'gist_settings',
-			esc_html__( 'GitHub Gist Settings', 'github-updater' ),
+			esc_html__( 'GitHub Gist Settings', 'git-updater-gist' ),
 			null,
 			'github_updater_gist_install_settings'
 		);
@@ -330,7 +330,7 @@ class Gist_API extends API implements API_Interface {
 		if ( $auth_required['gist_private'] ) {
 			add_settings_section(
 				'gist_id',
-				esc_html__( 'Gist Private Settings', 'github-updater' ),
+				esc_html__( 'Gist Private Settings', 'git-updater-gist' ),
 				[ $this, 'print_section_gist_info' ],
 				'github_updater_gist_install_settings'
 			);
@@ -357,7 +357,7 @@ class Gist_API extends API implements API_Interface {
 	 * Print the GitHub text.
 	 */
 	public function print_section_gist_info() {
-		esc_html_e( 'Enter your GitHub Access Token. Leave empty for public repositories.', 'github-updater' );
+		esc_html_e( 'Enter your GitHub Access Token. Leave empty for public repositories.', 'git-updater-gist' );
 	}
 
 	/**
@@ -375,7 +375,7 @@ class Gist_API extends API implements API_Interface {
 		add_filter(
 			'github_updater_add_settings_subtabs',
 			function ( $subtabs ) {
-				return array_merge( $subtabs, [ 'gist' => esc_html__( 'Gist', 'github-updater' ) ] );
+				return array_merge( $subtabs, [ 'gist' => esc_html__( 'Gist', 'git-updater-gist' ) ] );
 			}
 		);
 	}

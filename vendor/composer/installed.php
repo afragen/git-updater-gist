@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'e8d870ba8837da2760b4cc9aad8802e9ffb20111',
+    'reference' => '53aac948167b5ee3d7242abd8d0cfb59406e8925',
     'name' => 'afragen/git-updater-gist',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'e8d870ba8837da2760b4cc9aad8802e9ffb20111',
+      'reference' => '53aac948167b5ee3d7242abd8d0cfb59406e8925',
     ),
   ),
 );
