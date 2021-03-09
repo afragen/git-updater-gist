@@ -9,13 +9,13 @@ class ComposerStaticInita3f1c41c9fe0f8ac06c7145d329ea794
     public static $prefixLengthsPsr4 = array (
         'F' => 
         array (
-            'Fragen\\GitHub_Updater\\Gist\\' => 27,
+            'Fragen\\Git_Updater\\Gist\\' => 24,
             'Fragen\\GitHub_Updater\\API\\' => 26,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Fragen\\GitHub_Updater\\Gist\\' => 
+        'Fragen\\Git_Updater\\Gist\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

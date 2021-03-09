@@ -8,7 +8,7 @@
  * @package   git-updater-gitea
  */
 
-namespace Fragen\GitHub_Updater\Gist;
+namespace Fragen\Git_Updater\Gist;
 
 use Fragen\GitHub_Updater\API\Gist_API;
 

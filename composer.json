@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Fragen\\GitHub_Updater\\Gist\\": "src/",
+      "Fragen\\Git_Updater\\Gist\\": "src/",
       "Fragen\\GitHub_Updater\\API\\": "src/Gist/"
     }
   },
