@@ -153,33 +153,12 @@ class Gist_API extends API implements API_Interface {
 	/**
 	 * Create GitHub API endpoints.
 	 *
-	 * @param GitHub_API|API $git      Git host specific API object.
-	 * @param string         $endpoint Endpoint.
+	 * @param Gist_API|API $git      Git host specific API object.
+	 * @param string       $endpoint Endpoint.
 	 *
 	 * @return string $endpoint
 	 */
 	public function add_endpoints( $git, $endpoint ) {
-		switch ( $git::$method ) {
-			case 'file':
-			case 'readme':
-			case 'changes':
-				$endpoint = $endpoint['base_raw'];
-				break;
-			case 'meta':
-			case 'translation':
-				$endpoint = $endpoint['base_uri'];
-				break;
-			case 'download_link':
-				$endpoint = $endpoint['base_download'];
-				break;
-			case 'branches':
-			case 'tags':
-			case 'release_asset':
-				break;
-			default:
-				break;
-		}
-
 		return $endpoint;
 	}
 
