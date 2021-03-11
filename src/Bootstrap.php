@@ -120,6 +120,20 @@ class Bootstrap {
 		);
 
 		\add_filter(
+			'gu_api_url_type',
+			function ( $type, $repo, $download_link, $endpoint ) {
+				if ( 'gist' === $type['git'] ) {
+					$type['endpoint'] = false;
+					$type['base_uri'] = ( new Gist_API() )->add_endpoints( new Gist_API(), $type );
+				}
+
+				return $type;
+			},
+			10,
+			4
+		);
+
+		\add_filter(
 			'gu_git_servers',
 			function ( $git_servers ) {
 				return array_merge( $git_servers, [ 'gist' => 'Gist' ] );
@@ -135,6 +149,19 @@ class Bootstrap {
 			},
 			10,
 			1
+		);
+
+		\add_filter(
+			'gu_install_remote_install',
+			function ( $install, $headers ) {
+				if ( 'gist' === $install['github_updater_api'] ) {
+					$install = ( new Gist_API() )->remote_install( $headers, $install );
+				}
+
+				return $install;
+			},
+			10,
+			2
 		);
 	}
 }
