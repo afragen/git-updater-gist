@@ -123,8 +123,10 @@ class Bootstrap {
 			'gu_api_url_type',
 			function ( $type, $repo, $download_link, $endpoint ) {
 				if ( 'gist' === $type['git'] ) {
-					$type['endpoint'] = false;
-					$type['base_uri'] = ( new Gist_API() )->add_endpoints( new Gist_API(), $type );
+					$method = ( new Gist_API() )->get_class_vars( 'API\Gist_API', 'method' );
+					if ( in_array( $method, [ 'file', 'readme', 'changes' ], true ) ) {
+						$type['base_uri'] = $type['base_raw'];
+					}
 				}
 
 				return $type;
