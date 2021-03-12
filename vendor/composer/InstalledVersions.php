@@ -25,24 +25,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => 'dev-main',
-    'version' => 'dev-main',
+    'pretty_version' => 'dev-develop',
+    'version' => 'dev-develop',
     'aliases' => 
     array (
     ),
-    'reference' => '53aac948167b5ee3d7242abd8d0cfb59406e8925',
+    'reference' => 'd937900e6ecf43a086178c1c76dc4d8ce82f2d3b',
     'name' => 'afragen/git-updater-gist',
   ),
   'versions' => 
   array (
     'afragen/git-updater-gist' => 
     array (
-      'pretty_version' => 'dev-main',
-      'version' => 'dev-main',
+      'pretty_version' => 'dev-develop',
+      'version' => 'dev-develop',
       'aliases' => 
       array (
       ),
-      'reference' => '53aac948167b5ee3d7242abd8d0cfb59406e8925',
+      'reference' => 'd937900e6ecf43a086178c1c76dc4d8ce82f2d3b',
     ),
   ),
 );
