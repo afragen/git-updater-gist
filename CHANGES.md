@@ -1,4 +1,5 @@
 [unreleased]
+* de-anonymize hooks
 
 #### 0.4.1 / 2021-03-10
 * refactor `get_api_url_type`
