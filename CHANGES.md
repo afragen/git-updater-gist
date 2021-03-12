@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 0.5.0 / 2021-03-12
+* de-anonymize hooks
+
 #### 0.4.1 / 2021-03-10
 * refactor `get_api_url_type`
 * update `add_endpoints()` for consistency

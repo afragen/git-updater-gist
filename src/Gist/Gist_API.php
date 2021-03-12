@@ -266,11 +266,6 @@ class Gist_API extends API implements API_Interface {
 			return $response;
 		}
 		$branches = [];
-		// foreach ( $response as $branch ) {
-		// $branches[ $branch->name ]['download']    = $this->construct_download_link( $branch->name );
-		// $branches[ $branch->name ]['commit_hash'] = $branch->commit->sha;
-		// $branches[ $branch->name ]['commit_api']  = $branch->commit->url;
-		// }
 
 		return $branches;
 	}
