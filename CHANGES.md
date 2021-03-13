@@ -1,4 +1,5 @@
 [unreleased]
+* remove constructor
 * update `$auth_required`
 * add some tests
 
