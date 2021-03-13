@@ -32,31 +32,6 @@ if ( ! defined( 'WPINC' ) ) {
  */
 class Bootstrap {
 	/**
-	 * Holds main plugin file.
-	 *
-	 * @var $file
-	 */
-	protected $file;
-
-	/**
-	 * Holds main plugin directory.
-	 *
-	 * @var $dir
-	 */
-	protected $dir;
-
-	/**
-	 * Constructor.
-	 *
-	 * @param  string $file Main plugin file.
-	 * @return void
-	 */
-	public function __construct( $file ) {
-		$this->file = $file;
-		$this->dir  = dirname( $file );
-	}
-
-	/**
 	 * Run the bootstrap.
 	 *
 	 * @return bool|void
@@ -78,8 +53,10 @@ class Bootstrap {
 	public function load_hooks() {
 		add_filter( 'gu_get_repo_parts', [ $this, 'add_repo_parts' ], 10, 2 );
 		add_filter( 'gu_settings_auth_required', [ $this, 'set_auth_required' ], 10, 1 );
+		add_filter( 'gu_get_repo_api', [ $this, 'set_repo_api' ], 10, 3 );
 		add_filter( 'gu_api_repo_type_data', [ $this, 'set_repo_type_data' ], 10, 2 );
 		add_filter( 'gu_api_url_type', [ $this, 'set_api_url_data' ], 10, 4 );
+		add_filter( 'gu_post_get_credentials', [ $this, 'set_credentials' ], 10, 2 );
 		add_filter( 'gu_git_servers', [ $this, 'set_git_servers' ], 10, 1 );
 		add_filter( 'gu_installed_apis', [ $this, 'set_installed_apis' ], 10, 1 );
 		add_filter( 'gu_install_remote_install', [ $this, 'set_remote_install_data' ], 10, 2 );
@@ -112,9 +89,26 @@ class Bootstrap {
 			$auth_required,
 			[
 				'gist'         => false,
-				'gist_private' => false,
+				'gist_private' => true,
 			]
 		);
+	}
+
+	/**
+	 * Return git host API object.
+	 *
+	 * @param \stdClass $repo_api Git API object.
+	 * @param string    $git      Name of git host.
+	 * @param \stdClass $repo     Repository object.
+	 *
+	 * @return \stdClass
+	 */
+	public function set_repo_api( $repo_api, $git, $repo ) {
+		if ( 'gist' === $git ) {
+			$repo_api = new Gist_API( $repo );
+		}
+
+		return $repo_api;
 	}
 
 	/**
@@ -155,6 +149,35 @@ class Bootstrap {
 		}
 
 		return $type;
+	}
+
+	/**
+	 * Add credentials data for API.
+	 *
+	 * @param array $credentials Array of repository credentials data.
+	 * @param array $args        Hook args.
+	 *
+	 * @return array
+	 */
+	public function set_credentials( $credentials, $args ) {
+		if ( isset( $args['type'], $args['headers'], $args['options'], $args['slug'], $args['object'] ) ) {
+			$type    = $args['type'];
+			$headers = $args['headers'];
+			$options = $args['options'];
+			$slug    = $args['slug'];
+			$object  = $args['object'];
+		}
+		if ( 'gist' === $type || $object instanceof Gist_API ) {
+			$token = ! empty( $options['github_access_token'] ) ? $options['github_access_token'] : null;
+			$token = ! empty( $options[ $slug ] ) ? $options[ $slug ] : $token;
+
+			$credentials['type']       = 'github';
+			$credentials['isset']      = true;
+			$credentials['token']      = isset( $token ) ? $token : null;
+			$credentials['enterprise'] = ! in_array( $headers['host'], [ 'api.github.com', 'gist.githubusercontent.com' ], true );
+		}
+
+		return $credentials;
 	}
 
 	/**
