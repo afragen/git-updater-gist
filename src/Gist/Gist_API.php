@@ -56,7 +56,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return bool
 	 */
 	public function get_remote_info( $file ) {
-		return $this->get_remote_api_info( 'gist', $file, "/:owner/:gist_id/raw/{$file}" );
+		return $this->get_remote_api_info( 'gist', "/:owner/:gist_id/raw/{$file}" );
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Gist_API extends API implements API_Interface {
 	 */
 	public function get_remote_tag() {
 		// phpcs:ignore
-		// return $this->get_remote_api_tag( 'gist', '/repos/:owner/:repo/tags' );
+		// return $this->get_remote_api_tag( '/repos/:owner/:repo/tags' );
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return bool
 	 */
 	public function get_repo_meta() {
-		return $this->get_remote_api_repo_meta( 'gist', '/gists/:gist_id' );
+		return $this->get_remote_api_repo_meta( '/gists/:gist_id' );
 	}
 
 	/**
