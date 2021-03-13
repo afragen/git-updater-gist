@@ -290,12 +290,14 @@ class Gist_API extends API implements API_Interface {
 	 * @return void
 	 */
 	public function add_settings( $auth_required ) {
-		add_settings_section(
-			'gist_settings',
-			esc_html__( 'GitHub Gist Settings', 'git-updater-gist' ),
-			null,
-			'github_updater_gist_install_settings'
-		);
+		if ( $auth_required['gist'] ) {
+			add_settings_section(
+				'gist_settings',
+				esc_html__( 'GitHub Gist Settings', 'git-updater-gist' ),
+				null,
+				'github_updater_gist_install_settings'
+			);
+		}
 
 		/*
 		 * Show section for private GitHub Gists.
