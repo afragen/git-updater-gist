@@ -87,7 +87,7 @@ class Bootstrap {
 			$auth_required,
 			[
 				'gist'         => false,
-				'gist_private' => false,
+				'gist_private' => true,
 			]
 		);
 	}
