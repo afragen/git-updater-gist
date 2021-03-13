@@ -160,19 +160,21 @@ class Bootstrap {
 	 * @return array
 	 */
 	public function set_credentials( $credentials, $args ) {
-		if ( isset( $args['type'], $args['headers'], $args['hosts'], $args['options'], $args['slug'] ) ) {
+		if ( isset( $args['type'], $args['headers'], $args['options'], $args['slug'], $args['object'] ) ) {
 			$type    = $args['type'];
 			$headers = $args['headers'];
-			$hosts   = $args['hosts'];
 			$options = $args['options'];
 			$slug    = $args['slug'];
+			$object  = $args['object'];
 		}
-		if ( 'gist' === $type || $type instanceof Gist_API ) {
+		if ( 'gist' === $type || $object instanceof Gist_API ) {
 			$token = ! empty( $options['github_access_token'] ) ? $options['github_access_token'] : null;
 			$token = ! empty( $options[ $slug ] ) ? $options[ $slug ] : $token;
 
-			$credentials['token'] = $token;
-			$credentials['type']  = 'github';
+			$credentials['type']       = 'github';
+			$credentials['isset']      = true;
+			$credentials['token']      = isset( $token ) ? $token : null;
+			$credentials['enterprise'] = ! in_array( $headers['host'], [ 'api.github.com', 'gist.githubusercontent.com' ], true );
 		}
 
 		return $credentials;
