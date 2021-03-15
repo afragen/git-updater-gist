@@ -50,7 +50,7 @@ class BootstrapTest extends WP_UnitTestCase {
 			'base_raw'      => 'https://gist.githubusercontent.com',
 		];
 
-		$actual_org   = (new Bootstrap())->set_repo_type_data([], $org);
+		$actual_org = (new Bootstrap())->set_repo_type_data([], $org);
 		$this->assertEqualSetsWithIndex($expected_org, $actual_org);
 	}
 }
