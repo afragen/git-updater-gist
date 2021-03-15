@@ -1,4 +1,6 @@
 [unreleased]
+* add filter `gu_post_api_response_body`
+* add filter `gu_get_git_icon_data`
 
 #### 0.6.0 / 2021-03-13
 * remove constructor
