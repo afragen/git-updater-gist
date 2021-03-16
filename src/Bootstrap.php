@@ -1,11 +1,11 @@
 <?php
 /**
- * Git Updater - Gitea
+ * Git Updater - Gist
  *
  * @author    Andy Fragen
  * @license   MIT
- * @link      https://github.com/afragen/git-updater-gitea
- * @package   git-updater-gitea
+ * @link      https://github.com/afragen/git-updater-gist
+ * @package   git-updater-gist
  */
 
 namespace Fragen\Git_Updater\Gist;
@@ -59,7 +59,9 @@ class Bootstrap {
 		add_filter( 'gu_post_get_credentials', [ $this, 'set_credentials' ], 10, 2 );
 		add_filter( 'gu_git_servers', [ $this, 'set_git_servers' ], 10, 1 );
 		add_filter( 'gu_installed_apis', [ $this, 'set_installed_apis' ], 10, 1 );
+		add_filter( 'gu_post_api_response_body', [ $this, 'convert_remote_body_response' ], 10, 2 );
 		add_filter( 'gu_install_remote_install', [ $this, 'set_remote_install_data' ], 10, 2 );
+		add_filter( 'gu_get_git_icon_data', [ $this, 'set_git_icon_data' ], 10, 2 );
 	}
 
 	/**
@@ -203,6 +205,25 @@ class Bootstrap {
 	}
 
 	/**
+	 * Convert HHTP remote body response to JSON.
+	 *
+	 * @param array     $response HTTP GET response.
+	 * @param \stdClass $obj API object.
+	 *
+	 * @return array
+	 */
+	public function convert_remote_body_response( $response, $obj ) {
+		if ( $obj instanceof Gist_API ) {
+			$body = wp_remote_retrieve_body( $response );
+			if ( null === json_decode( $body ) ) {
+				$response['body'] = json_encode( $body );
+			}
+		}
+
+		return $response;
+	}
+
+	/**
 	 * Set remote installation data for specific API.
 	 *
 	 * @param array $install Array of remote installation data.
@@ -216,5 +237,25 @@ class Bootstrap {
 		}
 
 		return $install;
+	}
+
+	/**
+	 * Set API icon data for display.
+	 *
+	 * @param array  $icon_data Header data for API.
+	 * @param string $type_cap Plugin|Theme.
+	 *
+	 * @return array
+	 */
+	public function set_git_icon_data( $icon_data, $type_cap ) {
+		$icon_data['headers'] = array_merge(
+			$icon_data['headers'],
+			[ "Gist{$type_cap}URI" => "Gist {$type_cap} URI" ]
+		);
+		$icon_data['icons']   = array_merge(
+			$icon_data['icons'],
+			[ 'gist' => basename( dirname( __DIR__ ) ) . '/assets/github-logo.svg' ]
+		);
+		return $icon_data;
 	}
 }
