@@ -53,4 +53,15 @@ class BootstrapTest extends WP_UnitTestCase {
 		$actual_org = (new Bootstrap())->set_repo_type_data([], $org);
 		$this->assertEqualSetsWithIndex($expected_org, $actual_org);
 	}
+
+	public function test_get_icon_data() {
+		$icon_data           = ['headers' => [], 'icons'=>[]];
+		$expected['headers'] = ['GistPluginURI' => 'Gist Plugin URI'];
+		$expected['icons']   = ['gist' => 'git-updater-gist/assets/github-logo.svg' ];
+
+		$actual = (new Bootstrap())->set_git_icon_data($icon_data, 'Plugin');
+
+		$this->assertEqualSetsWithIndex($expected, $actual);
+	}
+
 }
