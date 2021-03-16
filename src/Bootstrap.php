@@ -51,6 +51,7 @@ class Bootstrap {
 	 * @return void
 	 */
 	public function load_hooks() {
+		add_filter( 'gu_fix_repo_slug', [ $this, 'fix_repo_slug' ], 10, 2 );
 		add_filter( 'gu_get_repo_parts', [ $this, 'add_repo_parts' ], 10, 2 );
 		add_filter( 'gu_settings_auth_required', [ $this, 'set_auth_required' ], 10, 1 );
 		add_filter( 'gu_get_repo_api', [ $this, 'set_repo_api' ], 10, 3 );
@@ -62,6 +63,24 @@ class Bootstrap {
 		add_filter( 'gu_post_api_response_body', [ $this, 'convert_remote_body_response' ], 10, 2 );
 		add_filter( 'gu_install_remote_install', [ $this, 'set_remote_install_data' ], 10, 2 );
 		add_filter( 'gu_get_git_icon_data', [ $this, 'set_git_icon_data' ], 10, 2 );
+	}
+
+	/**
+	 * Fix Gist repo slug from gist_id to slug.
+	 *
+	 * @param \stdClass $config Git Updater config object.
+	 * @param \stdClass $plugin Repository object.
+	 *
+	 * @return \stdClass
+	 */
+	public function fix_repo_slug( $config, $plugin ) {
+		if ( 'gist' === $plugin->git ) {
+			$plugin                  = ( new Gist_API() )->parse_gist_meta( $plugin );
+			$config[ $plugin->slug ] = $plugin;
+			unset( $config[ $plugin->gist_id ] );
+		}
+
+		return $config;
 	}
 
 	/**
@@ -208,7 +227,7 @@ class Bootstrap {
 	 * Convert HHTP remote body response to JSON.
 	 *
 	 * @param array     $response HTTP GET response.
-	 * @param \stdClass $obj API object.
+	 * @param \stdClass $obj      API object.
 	 *
 	 * @return array
 	 */
@@ -243,7 +262,7 @@ class Bootstrap {
 	 * Set API icon data for display.
 	 *
 	 * @param array  $icon_data Header data for API.
-	 * @param string $type_cap Plugin|Theme.
+	 * @param string $type_cap  Plugin|Theme.
 	 *
 	 * @return array
 	 */
@@ -256,6 +275,7 @@ class Bootstrap {
 			$icon_data['icons'],
 			[ 'gist' => basename( dirname( __DIR__ ) ) . '/assets/github-logo.svg' ]
 		);
+
 		return $icon_data;
 	}
 }
