@@ -35,7 +35,7 @@ class Gist_API extends API implements API_Interface {
 	 */
 	public function __construct( $type = null ) {
 		parent::__construct();
-		$this->type     = null === $type ? $type : $this->parse_gist_meta( $type );
+		$this->type     = $type;
 		$this->response = $this->get_repo_cache();
 		$branch         = new Branch( $this->response );
 		if ( ! empty( $type->branch ) ) {
@@ -165,13 +165,13 @@ class Gist_API extends API implements API_Interface {
 	/**
 	 * Parse gist data.
 	 *
-	 * @param \stdClass $repo Repository object.
+	 * @param array $repo Repository meta array.
 	 *
-	 * @return \stdClass
+	 * @return array
 	 */
 	public function parse_gist_meta( $repo ) {
-		$repo->gist_id = property_exists( $repo, 'gist_id' ) ? $repo->gist_id : $repo->slug;
-		$repo->slug    = property_exists( $repo, 'file' ) ? dirname( $repo->file ) : $repo->slug;
+		$repo['gist_id'] = isset( $repo['gist_id'] ) ? $repo['gist_id'] : $repo['slug'];
+		$repo['slug']    = isset( $repo['file'] ) ? dirname( $repo['file'] ) : $repo['slug'];
 
 		return $repo;
 	}
@@ -295,7 +295,7 @@ class Gist_API extends API implements API_Interface {
 				'gist_settings',
 				esc_html__( 'GitHub Gist Settings', 'git-updater-gist' ),
 				null,
-				'github_updater_gist_install_settings'
+				'git_updater_gist_install_settings'
 			);
 		}
 
@@ -307,7 +307,7 @@ class Gist_API extends API implements API_Interface {
 				'gist_id',
 				esc_html__( 'Gist Private Settings', 'git-updater-gist' ),
 				[ $this, 'print_section_gist_info' ],
-				'github_updater_gist_install_settings'
+				'git_updater_gist_install_settings'
 			);
 		}
 	}
@@ -318,7 +318,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return mixed
 	 */
 	public function add_repo_setting_field() {
-		$setting_field['page']            = 'github_updater_gist_install_settings';
+		$setting_field['page']            = 'git_updater_gist_install_settings';
 		$setting_field['section']         = 'gist_id';
 		$setting_field['callback_method'] = [
 			Singleton::get_instance( 'Settings', $this ),

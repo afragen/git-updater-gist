@@ -69,18 +69,16 @@ class Bootstrap {
 	 * Fix Gist repo slug from gist_id to slug.
 	 *
 	 * @param \stdClass $config Git Updater config object.
-	 * @param \stdClass $plugin Repository object.
+	 * @param array     $plugin Repository meta object.
 	 *
-	 * @return \stdClass
+	 * @return array
 	 */
-	public function fix_repo_slug( $config, $plugin ) {
-		if ( 'gist' === $plugin->git ) {
-			$plugin                  = ( new Gist_API() )->parse_gist_meta( $plugin );
-			$config[ $plugin->slug ] = $plugin;
-			unset( $config[ $plugin->gist_id ] );
+	public function fix_repo_slug( $plugin ) {
+		if ( 'gist' === $plugin['git'] ) {
+			$plugin = ( new Gist_API() )->parse_gist_meta( $plugin );
 		}
 
-		return $config;
+		return $plugin;
 	}
 
 	/**
