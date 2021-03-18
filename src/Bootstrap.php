@@ -249,7 +249,7 @@ class Bootstrap {
 	 * @return array
 	 */
 	public function set_remote_install_data( $install, $headers ) {
-		if ( 'gist' === $install['github_updater_api'] ) {
+		if ( 'gist' === $install['git_updater_api'] ) {
 			$install = ( new Gist_API() )->remote_install( $headers, $install );
 		}
 
