@@ -295,7 +295,7 @@ class Gist_API extends API implements API_Interface {
 				'gist_settings',
 				esc_html__( 'GitHub Gist Settings', 'git-updater-gist' ),
 				null,
-				'github_updater_gist_install_settings'
+				'git_updater_gist_install_settings'
 			);
 		}
 
@@ -307,7 +307,7 @@ class Gist_API extends API implements API_Interface {
 				'gist_id',
 				esc_html__( 'Gist Private Settings', 'git-updater-gist' ),
 				[ $this, 'print_section_gist_info' ],
-				'github_updater_gist_install_settings'
+				'git_updater_gist_install_settings'
 			);
 		}
 	}
@@ -318,7 +318,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return mixed
 	 */
 	public function add_repo_setting_field() {
-		$setting_field['page']            = 'github_updater_gist_install_settings';
+		$setting_field['page']            = 'git_updater_gist_install_settings';
 		$setting_field['section']         = 'gist_id';
 		$setting_field['callback_method'] = [
 			Singleton::get_instance( 'Settings', $this ),
