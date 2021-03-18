@@ -35,7 +35,7 @@ class Gist_API extends API implements API_Interface {
 	 */
 	public function __construct( $type = null ) {
 		parent::__construct();
-		$this->type     = null === $type ? $type : $this->parse_gist_meta( $type );
+		$this->type     = $type;
 		$this->response = $this->get_repo_cache();
 		$branch         = new Branch( $this->response );
 		if ( ! empty( $type->branch ) ) {
@@ -165,13 +165,13 @@ class Gist_API extends API implements API_Interface {
 	/**
 	 * Parse gist data.
 	 *
-	 * @param \stdClass $repo Repository object.
+	 * @param array $repo Repository meta array.
 	 *
-	 * @return \stdClass
+	 * @return array
 	 */
 	public function parse_gist_meta( $repo ) {
-		$repo->gist_id = property_exists( $repo, 'gist_id' ) ? $repo->gist_id : $repo->slug;
-		$repo->slug    = property_exists( $repo, 'file' ) ? dirname( $repo->file ) : $repo->slug;
+		$repo['gist_id'] = isset( $repo['gist_id'] ) ? $repo['gist_id'] : $repo['slug'];
+		$repo['slug']    = isset( $repo['file'] ) ? dirname( $repo['file'] ) : $repo['slug'];
 
 		return $repo;
 	}
