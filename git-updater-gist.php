@@ -1,7 +1,7 @@
 <?php
 /**
  * Git Updater - Gist.
- * Requires GitHub Updater plugin.
+ * Requires Git Updater plugin.
  *
  * @package git-updater-gist
  * @author  Andy Fragen
@@ -10,10 +10,10 @@
  */
 
 /**
- * Plugin Name:       GitHub Updater - Gist
+ * Plugin Name:       Git Updater - Gist
  * Plugin URI:        https://github.com/afragen/git-updater-gist
- * Description:       Add GitHub Gist hosted repositories to the GitHub Updater plugin.
- * Version:           0.7.0
+ * Description:       Add GitHub Gist hosted repositories to the Git Updater plugin.
+ * Version:           0.8.0
  * Author:            Andy Fragen
  * License:           MIT
  * Network:           true

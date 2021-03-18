@@ -22,7 +22,7 @@
   "autoload": {
     "psr-4": {
       "Fragen\\Git_Updater\\Gist\\": "src/",
-      "Fragen\\GitHub_Updater\\API\\": "src/Gist/"
+      "Fragen\\Git_Updater\\API\\": "src/Gist/"
     }
   },
   "scripts": {
