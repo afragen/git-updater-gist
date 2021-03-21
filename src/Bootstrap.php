@@ -68,8 +68,7 @@ class Bootstrap {
 	/**
 	 * Fix Gist repo slug from gist_id to slug.
 	 *
-	 * @param \stdClass $config Git Updater config object.
-	 * @param array     $plugin Repository meta object.
+	 * @param array $plugin Repository meta object.
 	 *
 	 * @return array
 	 */
