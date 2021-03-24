@@ -184,6 +184,8 @@ class Bootstrap {
 			$options = $args['options'];
 			$slug    = $args['slug'];
 			$object  = $args['object'];
+		} else {
+			return;
 		}
 		if ( 'gist' === $type || $object instanceof Gist_API ) {
 			$token = ! empty( $options['github_access_token'] ) ? $options['github_access_token'] : null;
