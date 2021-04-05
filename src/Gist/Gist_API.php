@@ -142,12 +142,12 @@ class Gist_API extends API implements API_Interface {
 		 * to use as a download link during a branch switch.
 		 *
 		 * @since 8.8.0
-		 *
+		 * @since 10.0.0
 		 * @param string    $download_link Download URL.
 		 * @param /stdClass $this->type    Repository object.
 		 * @param string    $branch_switch Branch or tag for rollback or branch switching.
 		 */
-		return apply_filters( 'github_updater_post_construct_download_link', $download_link, $this->type, $branch_switch );
+		return apply_filters( 'gu_post_construct_download_link', $download_link, $this->type, $branch_switch );
 	}
 
 	/**
@@ -348,7 +348,7 @@ class Gist_API extends API implements API_Interface {
 	 */
 	private function add_settings_subtab() {
 		add_filter(
-			'github_updater_add_settings_subtabs',
+			'gu_add_settings_subtabs',
 			function ( $subtabs ) {
 				return array_merge( $subtabs, [ 'gist' => esc_html__( 'Gist', 'git-updater-gist' ) ] );
 			}
@@ -364,11 +364,11 @@ class Gist_API extends API implements API_Interface {
 	 * @return mixed
 	 */
 	public function remote_install( $headers, $install ) {
-		$remote                                 = $this->get_remote_gist_install( $headers );
-		self::$method                           = 'download_link';
-		$download_link_base                     = $this->get_api_url( '/:owner/:gist_id/archive/', true );
-		$endpoint                               = "{$remote->meta['current_hash']}.zip";
-		$install['download_link']               = $download_link_base . $endpoint;
+		$remote                              = $this->get_remote_gist_install( $headers );
+		self::$method                        = 'download_link';
+		$download_link_base                  = $this->get_api_url( '/:owner/:gist_id/archive/', true );
+		$endpoint                            = "{$remote->meta['current_hash']}.zip";
+		$install['download_link']            = $download_link_base . $endpoint;
 		$install['git_updater_install_repo'] = property_exists( $remote, 'slug' ) ? $remote->slug : $install['git_updater_install_repo'];
 
 		return $install;
