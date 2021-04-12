@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'd937900e6ecf43a086178c1c76dc4d8ce82f2d3b',
+    'reference' => 'ea15d6d18c33227c309efa824f119ccea45a3f25',
     'name' => 'afragen/git-updater-gist',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'd937900e6ecf43a086178c1c76dc4d8ce82f2d3b',
+      'reference' => 'ea15d6d18c33227c309efa824f119ccea45a3f25',
     ),
   ),
 );

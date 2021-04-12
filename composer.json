@@ -1,6 +1,6 @@
 {
   "name": "afragen/git-updater-gist",
-  "description": "Add GitHub Gist hosted repositories to GitHub Updater.",
+  "description": "Add GitHub Gist hosted repositories to Git Updater.",
   "type": "wordpress-plugin",
   "license": "MIT",
   "authors": [
@@ -17,7 +17,7 @@
   },
   "prefer-stable": true,
   "require": {
-    "php": ">=5.6"
+    "php": ">=7.0"
   },
   "autoload": {
     "psr-4": {
