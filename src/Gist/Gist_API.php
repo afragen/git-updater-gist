@@ -11,7 +11,6 @@
 namespace Fragen\Git_Updater\API;
 
 use Fragen\Singleton;
-use Fragen\Git_Updater\Branch;
 
 /*
  * Exit if called directly.
@@ -37,12 +36,6 @@ class Gist_API extends API implements API_Interface {
 		parent::__construct();
 		$this->type     = $type;
 		$this->response = $this->get_repo_cache();
-		$branch         = new Branch( $this->response );
-		if ( ! empty( $type->branch ) ) {
-			$this->type->branch = ! empty( $branch->cache['current_branch'] )
-				? $branch->cache['current_branch']
-				: $type->branch;
-		}
 		$this->settings_hook( $this );
 		$this->add_settings_subtab();
 		$this->add_install_fields( $this );
