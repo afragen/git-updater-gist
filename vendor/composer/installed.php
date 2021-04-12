@@ -6,11 +6,7 @@
     'aliases' => 
     array (
     ),
-<<<<<<< HEAD
-    'reference' => 'b3653d1d46268b13c37ba0e6adb891d096560968',
-=======
-    'reference' => 'ea15d6d18c33227c309efa824f119ccea45a3f25',
->>>>>>> develop
+    'reference' => '841ab5bee2fa1b55df5293616529e5018c096551',
     'name' => 'afragen/git-updater-gist',
   ),
   'versions' => 
@@ -22,11 +18,7 @@
       'aliases' => 
       array (
       ),
-<<<<<<< HEAD
-      'reference' => 'b3653d1d46268b13c37ba0e6adb891d096560968',
-=======
-      'reference' => 'ea15d6d18c33227c309efa824f119ccea45a3f25',
->>>>>>> develop
+      'reference' => '841ab5bee2fa1b55df5293616529e5018c096551',
     ),
   ),
 );
