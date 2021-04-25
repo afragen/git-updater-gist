@@ -15,7 +15,7 @@
 * Donate link: <https://thefragens.com/git-updater-donate>
 * License: MIT
 
-This plugin allows GitLab functionality for the [GitHub Updater/Git Updater](https://github.com/afragen/git-updater) plugin.
+This plugin allows GitHub Gist functionality for the [GitHub Updater/Git Updater](https://github.com/afragen/git-updater) plugin.
 
 ## Description
 
