@@ -62,7 +62,6 @@ class Freemius_Addon {
 						[
 							'id'               => '8236',
 							'slug'             => 'git-updater-gist',
-							'premium_slug'     => 'git-updater-gist-pre',
 							'type'             => 'plugin',
 							'public_key'       => 'pk_a84974535875515919cb887e60ecd',
 							'is_premium'       => false,
@@ -76,6 +75,7 @@ class Freemius_Addon {
 							],
 							'menu'             => [
 								'first-path' => 'plugins.php',
+								'account'    => false,
 								'support'    => false,
 							],
 						]
