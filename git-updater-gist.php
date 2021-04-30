@@ -39,12 +39,7 @@ if ( ! defined( 'WPINC' ) ) {
 require_once __DIR__ . '/vendor/autoload.php';
 
 ( new Bootstrap() )->load_hooks();
-add_action(
-	'init',
-	function() {
-		new Freemius_Addon();
-	}
-);
+
 add_action(
 	'plugins_loaded',
 	function () {

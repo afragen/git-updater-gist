@@ -1,5 +1,4 @@
 [unreleased]
-* add Freemius integration
 
 #### 0.9.1 / 2021-04-12
 * fix PHP error, filter must return value
