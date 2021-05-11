@@ -13,7 +13,7 @@
  * Plugin Name:       Git Updater - Gist
  * Plugin URI:        https://github.com/afragen/git-updater-gist
  * Description:       Add GitHub Gist hosted repositories to the Git Updater plugin.
- * Version:           0.9.2
+ * Version:           1.0.0
  * Author:            Andy Fragen
  * License:           MIT
  * Network:           true

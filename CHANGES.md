@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 1.0.0 / 2021-05-11
+* update logo branding
+
 #### 0.9.1 / 2021-04-12
 * fix PHP error, filter must return value
 
