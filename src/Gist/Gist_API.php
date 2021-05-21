@@ -109,6 +109,7 @@ class Gist_API extends API implements API_Interface {
 	public function get_release_asset() {
 		// phpcs:ignore
 		// return $this->get_api_release_asset( 'gist', '/repos/:owner/:repo/releases/latest' );
+		return [];
 	}
 
 	/**
@@ -121,7 +122,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return string $endpoint
 	 */
 	public function construct_download_link( $branch_switch = false ) {
-		if ( ! isset( $this->response['meta'] ) ) {
+		if ( ! isset( $this->response['meta'] ) || ! is_array( $this->response['meta'] ) ) {
 			return;
 		}
 
@@ -325,7 +326,7 @@ class Gist_API extends API implements API_Interface {
 	 * Print the GitHub text.
 	 */
 	public function print_section_gist_info() {
-		esc_html_e( 'Enter your GitHub Access Token. Leave empty for public repositories.', 'git-updater-gist' );
+		 esc_html_e( 'Enter your GitHub Access Token. Leave empty for public repositories.', 'git-updater-gist' );
 	}
 
 	/**

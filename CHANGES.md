@@ -1,4 +1,8 @@
 [unreleased]
+* update readme
+
+#### 1.0.1 / 2021-05-21
+* add language pack updating
 
 #### 1.0.0 / 2021-05-11
 * update logo branding
