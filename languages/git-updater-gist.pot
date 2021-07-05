@@ -1,17 +1,17 @@
 # Copyright (C) 2021 Andy Fragen
-# This file is distributed under the same license as the Git Updater - Gist plugin.
+# This file is distributed under the MIT.
 msgid ""
 msgstr ""
-"Project-Id-Version: Git Updater - Gist 1.0.0\n"
+"Project-Id-Version: Git Updater - Gist 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/git-updater-gist\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-11T23:09:40+00:00\n"
+"POT-Creation-Date: 2021-07-05T23:32:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: git-updater-gist\n"
 
 #. Plugin Name of the plugin
@@ -30,18 +30,18 @@ msgstr ""
 msgid "Andy Fragen"
 msgstr ""
 
-#: src/Gist/Gist_API.php:289
+#: src/Gist/Gist_API.php:290
 msgid "GitHub Gist Settings"
 msgstr ""
 
-#: src/Gist/Gist_API.php:301
+#: src/Gist/Gist_API.php:302
 msgid "Gist Private Settings"
 msgstr ""
 
-#: src/Gist/Gist_API.php:328
+#: src/Gist/Gist_API.php:329
 msgid "Enter your GitHub Access Token. Leave empty for public repositories."
 msgstr ""
 
-#: src/Gist/Gist_API.php:346
+#: src/Gist/Gist_API.php:347
 msgid "Gist"
 msgstr ""
