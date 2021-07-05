@@ -1,4 +1,6 @@
 [unreleased]
+
+#### 1.1.0 / 2021-07-05
 * update readme
 * add PHP 5.6 compatibility
 
