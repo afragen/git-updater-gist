@@ -326,7 +326,7 @@ class Gist_API extends API implements API_Interface {
 	 * Print the GitHub text.
 	 */
 	public function print_section_gist_info() {
-		 esc_html_e( 'Enter your GitHub Access Token. Leave empty for public repositories.', 'git-updater-gist' );
+		esc_html_e( 'Enter your GitHub Access Token. Leave empty for public repositories.', 'git-updater-gist' );
 	}
 
 	/**
