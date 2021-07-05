@@ -1,5 +1,6 @@
 [unreleased]
 * update readme
+* add PHP 5.6 compatibility
 
 #### 1.0.1 / 2021-05-21
 * add language pack updating
