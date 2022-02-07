@@ -2,7 +2,7 @@
 
 #### 1.1.0 / 2021-07-05
 * update readme
-* add PHP 5.6 compatibility
+* updated for PHP 5.6 compatibility, will remove when WP core changes minimum requirement
 
 #### 1.0.1 / 2021-05-21
 * add language pack updating

@@ -25,7 +25,7 @@ jobs:
         include:
           - php-versions: ' 7.0'
             phpunit-versions: '5.7.27'
-            operating-system: ubuntu-16.04
+            operating-system: ubuntu-18.04
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
     - name: Checkout
@@ -38,6 +38,8 @@ jobs:
         coverage: none
         extensions: mysql
         tools: wp-cli, phpunit:${{ matrix.phpunit-versions }}
+      env:
+        COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Check PHP Version
       run: php -v
