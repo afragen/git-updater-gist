@@ -165,7 +165,12 @@ class Gist_API extends API implements API_Interface {
 	 */
 	public function parse_gist_meta( $repo ) {
 		$repo['gist_id'] = isset( $repo['gist_id'] ) ? $repo['gist_id'] : $repo['slug'];
-		$repo['slug']    = isset( $repo['file'] ) ? dirname( $repo['file'] ) : $repo['slug'];
+		if ( isset( $repo['file'] ) ) {
+			if ( ! strpos( $repo['file'], '/' ) ) {
+				// Strip `.php` from the filename.
+				$repo['slug'] = substr( $repo['file'], 0, -4 );
+			}
+		}
 
 		return $repo;
 	}
