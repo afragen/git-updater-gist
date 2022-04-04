@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 1.2.1 / 2022-04-03
+* need prior slug modification for when no longer single file plugin
+
 #### 1.2.0 / 2022-04-03
 * fix slug modification in `Gist_API::parse_gist_meta`
 
