@@ -1,4 +1,6 @@
 [unreleased]
+
+#### 1.2.0 / 2022-04-03
 * fix slug modification in `Gist_API::parse_gist_meta`
 
 #### 1.1.0 / 2021-07-05

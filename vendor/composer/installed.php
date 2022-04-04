@@ -5,9 +5,9 @@
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a6253b56f0258e2ff9b6d96b0e4ba57c5a8ea2c0',
+        'reference' => 'd3b4abed8e43292ad3580132b2273766c5fcdaa4',
         'name' => 'afragen/git-updater-gist',
-        'dev' => false,
+        'dev' => true,
     ),
     'versions' => array(
         'afragen/git-updater-gist' => array(
@@ -16,7 +16,7 @@
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a6253b56f0258e2ff9b6d96b0e4ba57c5a8ea2c0',
+            'reference' => 'd3b4abed8e43292ad3580132b2273766c5fcdaa4',
             'dev_requirement' => false,
         ),
     ),
