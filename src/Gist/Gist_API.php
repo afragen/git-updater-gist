@@ -167,8 +167,12 @@ class Gist_API extends API implements API_Interface {
 		$repo['gist_id'] = isset( $repo['gist_id'] ) ? $repo['gist_id'] : $repo['slug'];
 		if ( isset( $repo['file'] ) ) {
 			if ( ! strpos( $repo['file'], '/' ) ) {
+				// For single file plugin.
 				// Strip `.php` from the filename.
 				$repo['slug'] = substr( $repo['file'], 0, -4 );
+			} else {
+				// After updated to containing folder.
+				$repo['slug'] = dirname( $repo['file'] );
 			}
 		}
 
