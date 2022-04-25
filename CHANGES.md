@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 2.0.0 / 2022-04-24
+* require PHP 7.2+
+
 #### 1.2.1 / 2022-04-03
 * need prior slug modification for when no longer single file plugin
 
