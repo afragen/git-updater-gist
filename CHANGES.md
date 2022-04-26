@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 2.0.1 / 2022-04-05
+* add missing `name` for remote install
+
 #### 2.0.0 / 2022-04-24
 * require PHP 7.2+
 

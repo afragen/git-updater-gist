@@ -393,6 +393,7 @@ class Gist_API extends API implements API_Interface {
 		$this->type->owner   = $headers['owner'];
 		$this->type->slug    = $headers['repo'];
 		$this->type->gist_id = $headers['repo'];
+		$this->type->name    = $headers['repo'];
 		$this->type->branch  = 'master';
 
 		$response         = $this->api( '/gists/:gist_id' );
