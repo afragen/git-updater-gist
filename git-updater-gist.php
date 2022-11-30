@@ -22,7 +22,7 @@
  * GitHub Plugin URI: https://github.com/afragen/git-updater-gist
  * GitHub Languages:  https://github.com/afragen/git-updater-gist-translations
  * Primary Branch:    main
- * Requires at least: 5.2
+ * Requires at least: 5.9
  * Requires PHP:      7.2
  */
 

@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
+        'name' => 'afragen/git-updater-gist',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
+        'reference' => '392d032d08586c061aac19a2d1d88dfa6c8cc1ed',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b5b408ebc067e83b96542dc0403d7db21427326b',
-        'name' => 'afragen/git-updater-gist',
         'dev' => false,
     ),
     'versions' => array(
         'afragen/git-updater-gist' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
+            'reference' => '392d032d08586c061aac19a2d1d88dfa6c8cc1ed',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b5b408ebc067e83b96542dc0403d7db21427326b',
             'dev_requirement' => false,
         ),
     ),

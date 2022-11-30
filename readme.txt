@@ -2,7 +2,7 @@
 
 * Contributors: afragen
 * Tags: gist, github, api, git updater, github updater
-* Requires at least: 5.2
+* Requires at least: 5.9
 * Requires PHP: 7.2
 * Tested up to: trunk
 * Stable tag: main
