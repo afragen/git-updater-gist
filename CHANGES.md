@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 2.0.2 / 2022-11-30
+* update GitHub Action
+
 #### 2.0.1 / 2022-04-05
 * add missing `name` for remote install
 
