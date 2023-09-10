@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 2.0.3 / 2023-09-10
+* WPCS 3.0.0
+
 #### 2.0.2 / 2022-11-30
 * update GitHub Action
 
