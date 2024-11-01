@@ -1,4 +1,5 @@
 [unreleased]
+* remove `load_plugin_textdomain()`
 
 #### 2.0.3 / 2023-09-10
 * WPCS 3.0.0

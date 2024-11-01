@@ -19,14 +19,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Load textdomain.
-\add_action(
-	'init',
-	function () {
-		load_plugin_textdomain( 'git-updater-gitlab' );
-	}
-);
-
 /**
  * Class Bootstrap
  */
