@@ -1,4 +1,5 @@
 [unreleased]
+* add GA to make-pot, releases
 
 #### 2.1.0 / 2024-10-31 🎃
 * remove `load_plugin_textdomain()`
