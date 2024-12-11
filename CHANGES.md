@@ -1,5 +1,9 @@
 [unreleased]
 
+#### 2.2.0 / 2024-12-11
+* add GA to make-pot, releases
+* load in `init` for `_load_textdomain_just_in_time`
+
 #### 2.1.0 / 2024-10-31 🎃
 * remove `load_plugin_textdomain()`
 * update GitHub Actions
