@@ -65,12 +65,12 @@ class Gist_API extends API implements API_Interface {
 	/**
 	 * Read the remote CHANGES.md file.
 	 *
-	 * @param string $changes The changelog filename - deprecated.
+	 * @param null $changes The changelog filename - deprecated.
 	 *
 	 * @return bool
 	 */
 	public function get_remote_changes( $changes ) {
-		// return $this->get_remote_api_changes( 'gist', "/:owner/:gist_id/raw/{$changes}" );
+		// return $this->get_remote_api_changes( 'gist', '/:owner/:gist_id/raw/:changelog' );
 	}
 
 	/**
