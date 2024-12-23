@@ -65,12 +65,12 @@ class Gist_API extends API implements API_Interface {
 	/**
 	 * Read the remote CHANGES.md file.
 	 *
-	 * @param string $changes Changelog filename.
+	 * @param null $changes The changelog filename - deprecated.
 	 *
 	 * @return bool
 	 */
 	public function get_remote_changes( $changes ) {
-		return $this->get_remote_api_changes( 'gist', $changes, "/:owner/:gist_id/raw/{$changes}" );
+		// return $this->get_remote_api_changes( 'gist', '/:owner/:gist_id/raw/:changelog' );
 	}
 
 	/**
@@ -79,7 +79,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return bool|void
 	 */
 	public function get_remote_readme() {
-		$this->get_remote_api_readme( 'gist', '/:owner/:gist_id/raw/readme.txt' );
+		// $this->get_remote_api_readme( 'gist', '/:owner/:gist_id/raw/:readme' );
 	}
 
 	/**
@@ -99,6 +99,15 @@ class Gist_API extends API implements API_Interface {
 	public function get_remote_branches() {
 		// phpcs:ignore
 		// return $this->get_remote_api_branches( 'gist', '/repos/:owner/:repo/branches' );
+	}
+
+	/**
+	 * Return list of repository assets.
+	 *
+	 * @return array
+	 */
+	public function get_repo_assets() {
+		// return $this->get_remote_api_assets( 'github', '/repos/:owner/:repo/contents/:path' );
 	}
 
 	/**
