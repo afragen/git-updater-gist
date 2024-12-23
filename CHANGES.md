@@ -1,4 +1,5 @@
 [unreleased]
+* updates for expected changes in Git Updater
 
 #### 2.2.0 / 2024-12-11
 * add GA to make-pot, releases
