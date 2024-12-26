@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 2.3.1 / 2024-12-26
+* revert fix for deprecated parameter
+
 #### 2.3.0 / 2024-12-23
 * updates for expected changes in Git Updater
 

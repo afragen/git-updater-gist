@@ -70,7 +70,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return bool
 	 */
 	public function get_remote_changes( $changes ) {
-		// return $this->get_remote_api_changes( 'gist', '/:owner/:gist_id/raw/:changelog' );
+		// return $this->get_remote_api_changes( 'gist', $changes, '/:owner/:gist_id/raw/:changelog' );
 	}
 
 	/**
