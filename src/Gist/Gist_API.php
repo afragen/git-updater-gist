@@ -70,7 +70,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return bool
 	 */
 	public function get_remote_changes( $changes ) {
-		// return $this->get_remote_api_changes( 'gist', $changes, '/:owner/:gist_id/raw/:changelog' );
+		return $this->get_remote_api_changes( 'gist', $changes, '/:owner/:gist_id/raw/:changelog' );
 	}
 
 	/**
@@ -79,7 +79,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return bool|void
 	 */
 	public function get_remote_readme() {
-		// $this->get_remote_api_readme( 'gist', '/:owner/:gist_id/raw/:readme' );
+		$this->get_remote_api_readme( 'gist', '/:owner/:gist_id/raw/:readme' );
 	}
 
 	/**
@@ -88,7 +88,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return bool
 	 */
 	public function get_repo_meta() {
-		return $this->get_remote_api_repo_meta( '/gists/:gist_id' );
+		return $this->get_remote_api_repo_meta( 'gist', '/gists/:gist_id' );
 	}
 
 	/**
@@ -106,8 +106,18 @@ class Gist_API extends API implements API_Interface {
 	 *
 	 * @return array
 	 */
+	public function get_repo_contents() {
+		return $this->get_remote_api_contents( 'gist', '/gists/:gist_id' );
+	}
+
+	/**
+	 * Return list of repository assets.
+	 *
+	 * @return array|void
+	 */
 	public function get_repo_assets() {
-		// return $this->get_remote_api_assets( 'github', '/repos/:owner/:repo/contents/:path' );
+		// phpcs:ignore
+		// return $this->get_remote_api_assets( 'gist', '/repos/:owner/:repo/contents/:path' );
 	}
 
 	/**
@@ -280,6 +290,52 @@ class Gist_API extends API implements API_Interface {
 		$branches = [];
 
 		return $branches;
+	}
+
+	/**
+	 * Parse remote root files/dirs.
+	 *
+	 * TODO: check gists with multiple files.
+	 *
+	 * @param \stdClass|array $response Response from API call.
+	 *
+	 * @return array
+	 */
+	protected function parse_contents_response( $response ) {
+		$files = [];
+		$dirs  = [];
+
+		foreach ( $response->files as $content ) {
+			$files[] = $content->filename;
+		}
+
+		return [
+			'files' => $files,
+			'dirs'  => $dirs,
+		];
+	}
+
+	/**
+	 * Parse remote assets directory.
+	 *
+	 * @param \stdClass|array $response Response from API call.
+	 *
+	 * @return \stdClass|array
+	 */
+	protected function parse_asset_dir_response( $response ) {
+		$assets = [];
+
+		if ( isset( $response->message ) || is_wp_error( $response ) ) {
+			return $response;
+		}
+
+		foreach ( $response as $asset ) {
+			if ( 'file' === $asset->type ) {
+				$assets[ $asset->name ] = $asset->download_url;
+			}
+		}
+
+		return $assets;
 	}
 
 	/**
