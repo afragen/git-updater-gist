@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 2.4.2 / 2025-01-05
+* set authentication headers
+
 #### 2.4.1 / 2025-01-02
 * update `Gist_API::parse_asset_dir_response`
 
