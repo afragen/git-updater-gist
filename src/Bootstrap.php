@@ -50,6 +50,7 @@ class Bootstrap {
 		add_filter( 'gu_api_repo_type_data', [ $this, 'set_repo_type_data' ], 10, 2 );
 		add_filter( 'gu_api_url_type', [ $this, 'set_api_url_data' ], 10, 4 );
 		add_filter( 'gu_post_get_credentials', [ $this, 'set_credentials' ], 10, 2 );
+		add_filter( 'gu_get_auth_header', [ $this, 'set_auth_header' ], 10, 2 );
 		add_filter( 'gu_git_servers', [ $this, 'set_git_servers' ], 10, 1 );
 		add_filter( 'gu_installed_apis', [ $this, 'set_installed_apis' ], 10, 1 );
 		add_filter( 'gu_post_api_response_body', [ $this, 'convert_remote_body_response' ], 10, 2 );
@@ -187,9 +188,26 @@ class Bootstrap {
 			$credentials['isset']      = true;
 			$credentials['token']      = isset( $token ) ? $token : null;
 			$credentials['enterprise'] = ! in_array( $headers['host'], [ 'api.github.com', 'gist.githubusercontent.com' ], true );
+			$credentials['slug']       = $slug;
 		}
 
 		return $credentials;
+	}
+
+	/**
+	 * Add Basic Authentication header.
+	 *
+	 * @param array $headers     HTTP GET headers.
+	 * @param array $credentials Repository credentials.
+	 *
+	 * @return array
+	 */
+	public function set_auth_header( $headers, $credentials ) {
+		if ( 'gist' === $credentials['type'] ) {
+			$headers['headers']['gist'] = $credentials['slug'];
+		}
+
+		return $headers;
 	}
 
 	/**
