@@ -242,6 +242,7 @@ class Gist_API extends API implements API_Interface {
 			function ( $e ) use ( &$arr ) {
 				$arr['private']      = ! $e->public;
 				$arr['last_updated'] = $e->updated_at;
+				$arr['added']        = $e->created_at;
 				$arr['watchers']     = $e->comments;
 				$arr['forks']        = count( $e->forks );
 				$arr['open_issues']  = 0;
