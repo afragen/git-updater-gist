@@ -306,8 +306,10 @@ class Gist_API extends API implements API_Interface {
 		$files = [];
 		$dirs  = [];
 
-		foreach ( $response->files as $content ) {
-			$files[] = $content->filename;
+		if ( property_exists( $response, 'files' ) ) {
+			foreach ( $response->files as $content ) {
+				$files[] = $content->filename;
+			}
 		}
 
 		return [
