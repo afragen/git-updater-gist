@@ -11,6 +11,7 @@
 namespace Fragen\Git_Updater\Gist;
 
 use Fragen\Git_Updater\API\Gist_API;
+use stdClass;
 
 /*
  * Exit if called directly.
@@ -108,11 +109,11 @@ class Bootstrap {
 	/**
 	 * Return git host API object.
 	 *
-	 * @param \stdClass $repo_api Git API object.
-	 * @param string    $git      Name of git host.
-	 * @param \stdClass $repo     Repository object.
+	 * @param stdClass $repo_api Git API object.
+	 * @param string   $git      Name of git host.
+	 * @param stdClass $repo     Repository object.
 	 *
-	 * @return \stdClass
+	 * @return stdClass
 	 */
 	public function set_repo_api( $repo_api, $git, $repo ) {
 		if ( 'gist' === $git ) {
@@ -125,8 +126,8 @@ class Bootstrap {
 	/**
 	 * Add API specific repo data.
 	 *
-	 * @param array     $arr  Array of repo API data.
-	 * @param \stdClass $repo Repository object.
+	 * @param array    $arr  Array of repo API data.
+	 * @param stdClass $repo Repository object.
 	 *
 	 * @return array
 	 */
@@ -144,10 +145,10 @@ class Bootstrap {
 	/**
 	 * Add API specific URL data.
 	 *
-	 * @param array     $type          Array of API type data.
-	 * @param \stdClass $repo          Repository object.
-	 * @param bool      $download_link Boolean indicating a download link.
-	 * @param string    $endpoint      API URL endpoint.
+	 * @param array    $type          Array of API type data.
+	 * @param stdClass $repo          Repository object.
+	 * @param bool     $download_link Boolean indicating a download link.
+	 * @param string   $endpoint      API URL endpoint.
 	 *
 	 * @return array $type
 	 */
@@ -235,8 +236,8 @@ class Bootstrap {
 	/**
 	 * Convert HHTP remote body response to JSON.
 	 *
-	 * @param array     $response HTTP GET response.
-	 * @param \stdClass $obj      API object.
+	 * @param array    $response HTTP GET response.
+	 * @param stdClass $obj      API object.
 	 *
 	 * @return array
 	 */
