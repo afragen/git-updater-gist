@@ -1,4 +1,6 @@
 [unreleased]
+
+#### 2.4.6 / 2025-09-22
 * harden `parse_meta_response()`
 
 #### 2.4.5 / 2025-08-04
