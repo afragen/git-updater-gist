@@ -241,13 +241,13 @@ class Gist_API extends API implements API_Interface {
 		array_filter(
 			$response,
 			function ( $e ) use ( &$arr ) {
-				$arr['private']      = ! $e->public;
-				$arr['last_updated'] = $e->updated_at;
-				$arr['added']        = $e->created_at;
-				$arr['watchers']     = $e->comments;
-				$arr['forks']        = count( $e->forks );
+				$arr['private']      = isset( $e->public ) ? ! $e->public : false;
+				$arr['last_updated'] = $e->updated_at ?? '';
+				$arr['added']        = $e->created_at ?? '';
+				$arr['watchers']     = $e->comments ?? 0;
+				$arr['forks']        = isset( $e->forks ) && is_countable( $e->forks ) ? count( $e->forks ) : 0;
 				$arr['open_issues']  = 0;
-				$arr['current_hash'] = isset( $e->history[0]->version ) ? $e->history[0]->version : null;
+				$arr['current_hash'] = $e->history[0]->version ?? null;
 			}
 		);
 
@@ -351,7 +351,7 @@ class Gist_API extends API implements API_Interface {
 	 * Parse tags and create download links.
 	 *
 	 * @param stdClass|array $response  Response from API call.
-	 * @param array           $repo_type Array of repo data.
+	 * @param array          $repo_type Array of repo data.
 	 *
 	 * @return array
 	 */
