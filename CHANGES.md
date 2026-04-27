@@ -1,4 +1,5 @@
 [unreleased]
+* use local variables
 
 #### 2.4.6 / 2025-09-22
 * harden `parse_meta_response()`

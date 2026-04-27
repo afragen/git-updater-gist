@@ -35,8 +35,7 @@ class Gist_API extends API implements API_Interface {
 	 */
 	public function __construct( $type = null ) {
 		parent::__construct();
-		$this->type     = $type;
-		$this->response = [];
+		$this->type = $type;
 		$this->settings_hook( $this );
 		$this->add_settings_subtab();
 		$this->add_install_fields( $this );
@@ -142,13 +141,16 @@ class Gist_API extends API implements API_Interface {
 	 * @return string $endpoint
 	 */
 	public function construct_download_link( $branch_switch = false ) {
-		if ( ! isset( $this->response['meta'] ) || ! is_array( $this->response['meta'] ) ) {
+		$cache_key = $this->get_cache_key( $this->type->slug ?? false );
+		$cache     = get_site_option( $cache_key );
+
+		if ( ! isset( $cache['meta'] ) || ! is_array( $cache['meta'] ) ) {
 			return;
 		}
 
 		self::$method       = 'download_link';
 		$download_link_base = $this->get_api_url( '/:owner/:gist_id/archive/', true );
-		$endpoint           = "{$this->response['meta']['current_hash']}.zip";
+		$endpoint           = "{$cache['meta']['current_hash']}.zip";
 		$download_link      = $download_link_base . $endpoint;
 
 		/**
