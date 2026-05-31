@@ -1,5 +1,8 @@
 [unreleased]
+
+#### 2.5.0 / 2026-05-31 🎂
 * use local variables
+* update docblocks
 
 #### 2.4.6 / 2025-09-22
 * harden `parse_meta_response()`
