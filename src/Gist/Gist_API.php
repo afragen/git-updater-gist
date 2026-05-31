@@ -35,8 +35,7 @@ class Gist_API extends API implements API_Interface {
 	 */
 	public function __construct( $type = null ) {
 		parent::__construct();
-		$this->type     = $type;
-		$this->response = [];
+		$this->type = $type;
 		$this->settings_hook( $this );
 		$this->add_settings_subtab();
 		$this->add_install_fields( $this );
@@ -68,7 +67,7 @@ class Gist_API extends API implements API_Interface {
 	 *
 	 * @param null $changes The changelog filename - deprecated.
 	 *
-	 * @return bool
+	 * @return bool|null
 	 */
 	public function get_remote_changes( $changes ) {
 		return $this->get_remote_api_changes( 'gist', $changes, '/:owner/:gist_id/raw/:changelog' );
@@ -86,7 +85,7 @@ class Gist_API extends API implements API_Interface {
 	/**
 	 * Read the repository meta from API.
 	 *
-	 * @return bool
+	 * @return bool|null
 	 */
 	public function get_repo_meta() {
 		return $this->get_remote_api_repo_meta( 'gist', '/gists/:gist_id' );
@@ -105,7 +104,7 @@ class Gist_API extends API implements API_Interface {
 	/**
 	 * Return list of repository assets.
 	 *
-	 * @return array
+	 * @return bool|null
 	 */
 	public function get_repo_contents() {
 		return $this->get_remote_api_contents( 'gist', '/gists/:gist_id' );
@@ -142,13 +141,15 @@ class Gist_API extends API implements API_Interface {
 	 * @return string $endpoint
 	 */
 	public function construct_download_link( $branch_switch = false ) {
-		if ( ! isset( $this->response['meta'] ) || ! is_array( $this->response['meta'] ) ) {
+		$cache = $this->get_repo_cache( $this->type->slug ?? false, false );
+
+		if ( ! isset( $cache['meta'] ) || ! is_array( $cache['meta'] ) ) {
 			return;
 		}
 
 		self::$method       = 'download_link';
 		$download_link_base = $this->get_api_url( '/:owner/:gist_id/archive/', true );
-		$endpoint           = "{$this->response['meta']['current_hash']}.zip";
+		$endpoint           = "{$cache['meta']['current_hash']}.zip";
 		$download_link      = $download_link_base . $endpoint;
 
 		/**
