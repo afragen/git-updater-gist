@@ -9,7 +9,7 @@
 * Contributors: [Andy Fragen](https://github.com/afragen), [contributors](https://github.com/afragen/git-updater-gist/graphs/contributors)
 * Tags: gist, github, api, git updater, github updater
 * Requires at least: 5.9
-* Requires PHP: 7.2
+* Requires PHP: 8.0
 * Tested up to: trunk
 * Stable tag: [main](https://github.com/afragen/git-updater-gist/releases/latest)
 * Donate link: <https://thefragens.com/git-updater-donate>
