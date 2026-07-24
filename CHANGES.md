@@ -1,5 +1,8 @@
 [unreleased]
 
+#### 2.6.0 / 2026-07-24
+* add custom autoloader
+
 #### 2.5.0 / 2026-05-31 🎂
 * use local variables
 * update docblocks
