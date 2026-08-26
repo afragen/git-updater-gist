@@ -141,7 +141,7 @@ class Gist_API extends API implements API_Interface {
 	 * @return string $endpoint
 	 */
 	public function construct_download_link( $branch_switch = false ) {
-		$cache = $this->get_repo_cache( $this->type->slug ?? false, false );
+		$cache = $this->get_repo_cache( $this->type->slug ?? false, false, [ 'meta' ] );
 
 		if ( ! isset( $cache['meta'] ) || ! is_array( $cache['meta'] ) ) {
 			return;

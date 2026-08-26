@@ -1,5 +1,6 @@
 [unreleased]
 * fix WPCS errors in the custom autoloader (missing @package tag, function docblock, short array syntax, array alignment, reserved $class param)
+* `construct_download_link()` reads the cached `meta` via a single-column projection instead of the full cache row, so the gist cache is served from the object-cache tier
 
 #### 2.6.0 / 2026-07-24
 * add custom autoloader
