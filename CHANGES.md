@@ -2,6 +2,7 @@
 * fix WPCS errors in the custom autoloader (missing @package tag, function docblock, short array syntax, array alignment, reserved $class param)
 * `construct_download_link()` reads the cached `meta` via a single-column projection instead of the full cache row, so the gist cache is served from the object-cache tier
 * security: contribute `gist.github.com`/`gist.githubusercontent.com` to the `github` host set through the new `gu_credential_hosts` filter so the GitHub token is only sent to authorized hosts, and reject a `remote_install()` download link on an unauthorized host (requires Git Updater 14.4+)
+* tests: run the PHPUnit suite under wp-env-macos — add phpunit + yoast/phpunit-polyfills dev deps, a coverage config, a `.wp-env.json` (PHP 8.2), a test bootstrap that loads the mounted main Git Updater plugin, and `test`/`test-ms`/`test-coverage`/`wp-env-start`/`wp-env-stop` composer scripts
 
 
 #### 2.6.0 / 2026-07-24
