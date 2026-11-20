@@ -11,6 +11,7 @@
 namespace Fragen\Git_Updater\Gist;
 
 use Fragen\Git_Updater\API\Gist_API;
+use WP_Error;
 use stdClass;
 
 /*
@@ -54,6 +55,7 @@ class Bootstrap {
 		add_filter( 'gu_get_auth_header', [ $this, 'set_auth_header' ], 10, 2 );
 		add_filter( 'gu_git_servers', [ $this, 'set_git_servers' ], 10, 1 );
 		add_filter( 'gu_installed_apis', [ $this, 'set_installed_apis' ], 10, 1 );
+		add_filter( 'gu_credential_hosts', [ $this, 'set_credential_hosts' ], 10, 1 );
 		add_filter( 'gu_post_api_response_body', [ $this, 'convert_remote_body_response' ], 10, 2 );
 		add_filter( 'gu_install_remote_install', [ $this, 'set_remote_install_data' ], 10, 2 );
 		add_filter( 'gu_get_git_icon_data', [ $this, 'set_git_icon_data' ], 10, 2 );
@@ -234,6 +236,21 @@ class Bootstrap {
 	}
 
 	/**
+	 * Add hosts authorized to receive Gist (GitHub) credentials.
+	 *
+	 * Gist authenticates as GitHub, so its hosts join the github set.
+	 *
+	 * @param array<string, array<int, string>> $hosts Provider => hostnames.
+	 *
+	 * @return array<string, array<int, string>>
+	 */
+	public function set_credential_hosts( $hosts ) {
+		$hosts['github'] = array_merge( $hosts['github'] ?? [], [ 'gist.github.com', 'gist.githubusercontent.com' ] );
+
+		return $hosts;
+	}
+
+	/**
 	 * Convert HHTP remote body response to JSON.
 	 *
 	 * @param array    $response HTTP GET response.
@@ -263,6 +280,18 @@ class Bootstrap {
 	public function set_remote_install_data( $install, $headers ) {
 		if ( 'gist' === $install['git_updater_api'] ) {
 			$install = ( new Gist_API() )->remote_install( $headers, $install );
+
+			$api = \Fragen\Singleton::get_instance( 'Fragen\Git_Updater\API\API', $this );
+			if ( ! $api->is_allowed_credential_host( (string) ( $install['download_link'] ?? '' ), 'gist' ) ) {
+				$install['error'] = new WP_Error(
+					'gu_install_host_not_allowed',
+					sprintf(
+						/* translators: %s: hostname of the install source. */
+						esc_html__( 'The install source %s is not an allowed host.', 'git-updater-gist' ),
+						(string) wp_parse_url( (string) ( $install['download_link'] ?? '' ), PHP_URL_HOST )
+					)
+				);
+			}
 		}
 
 		return $install;
